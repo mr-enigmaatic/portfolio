@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components"
 import ProjectCard from "../Cards/ProjectCard";
-import { projects } from "../../data/constants";
+import { myProjects } from "../../data/constants";
 
 const Container = styled.div`
 background: linear-gradient(343.07deg, rgba(132, 59, 206, 0.06) 5.71%, rgba(132, 59, 206, 0) 64.83%);
@@ -88,6 +88,7 @@ const CardContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 30px 0px 0px;
     gap: 28px;
     flex-wrap: wrap;
     // display: grid;
@@ -103,13 +104,13 @@ const CardContainer = styled.div`
 `;
 
 function Projects() {
-    const [toggle, setToggle] = useState("all");
+    const [toggle, setToggle] = useState("web app");
   return (
     <Container id="projects">
         <Wrapper>
         <Title>Projects</Title>
             <Desc>I have worked on a wide range of projects</Desc>
-            <ToogleGroup>
+            {/* <ToogleGroup>
                 {toggle === "all" ? (
                     <ToogleButton active value="all" onClick={()=> setToggle("all")}>ALL</ToogleButton>
                 ) : (
@@ -142,12 +143,14 @@ function Projects() {
                     <ToogleButton onClick={()=> setToggle("machine learning")}>
                     MACHINE LEARNING</ToogleButton>
                 )}
-            </ToogleGroup>
+            </ToogleGroup> */}
             <CardContainer>
-                {toggle === 'all' && projects.map((project)=> <ProjectCard project={project}/>)}
-                {projects.filter((item)=> item.category === toggle).map((project)=> (
+                {/* {toggle === 'all' && projects.map((project)=> <ProjectCard project={project}/>)} */}
+
+                {myProjects.filter((item)=> item.category === toggle).map((project)=> (
                     <ProjectCard project={project}/>
                 ))}
+
             </CardContainer>
         </Wrapper>
     </Container>

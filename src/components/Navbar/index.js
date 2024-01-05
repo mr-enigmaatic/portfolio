@@ -71,7 +71,7 @@ const NavItems = styled.ul`
     }
 `;
 
-const NavLink = styled.a`
+const NavLink = styled(LinkR)`
     color: ${({ theme }) => theme.text_primary};
     font-weight: 500;
     cursor: pointer;
@@ -144,7 +144,7 @@ const MobileMenu = styled.div`
     z-index: ${({ open }) => (open ? '-1' : '1')};
   `;
 
-const MobileMenuLinks = styled.a`
+const MobileMenuLinks = styled(LinkR)`
   color: ${({ theme }) => theme.text_primary};
   font-weight: 500;
   cursor: pointer;
@@ -171,9 +171,9 @@ function Navbar() {
     <Nav>
       <NavContainer>
         <NavLogo to="/">
-          <a style={{ display: "flex", alignItems: "center", color: "white", marginBottom: '20;', cursor: 'pointer' }}>
+          <p style={{ display: "flex", alignItems: "center", color: "white", marginBottom: '20;', cursor: 'pointer' }}>
             <DiCssdeck size="3rem" /> <Span>Portfolio</Span>
-          </a>
+          </p>
         </NavLogo>
         <MobileIcon>
           <FaBars onClick={() => {
@@ -181,28 +181,28 @@ function Navbar() {
           }} />
         </MobileIcon>
         <NavItems>
-          <NavLink href="#about">About</NavLink>
-          <NavLink href='#skills'>Skills</NavLink>
-          <NavLink href='#projects'>Projects</NavLink>
-          <NavLink href='#contact'>Contact</NavLink>
+          <NavLink to="/">About</NavLink>
+          <NavLink to='skills'>Skills</NavLink>
+          <NavLink to='projects'>Projects</NavLink>
+          <NavLink to='contact'>Contact</NavLink>
         </NavItems>
         <ButtonContainer>
-          <GitHubButton>Github Profile</GitHubButton>
+          <GitHubButton href={Bio.github} target="_blank">Github Profile</GitHubButton>
         </ButtonContainer>
       </NavContainer>
       {
         open && (
           <MobileMenu open={open}>
-            <MobileMenuLinks href="#about" onClick={() => {
+            <MobileMenuLinks to="/" onClick={() => {
               setOpen(!open)
             }}>About</MobileMenuLinks>
-            <MobileMenuLinks href='#skills' onClick={() => {
+            <MobileMenuLinks to='skills' onClick={() => {
               setOpen(!open)
             }}>Skills</MobileMenuLinks>
-            <MobileMenuLinks href='#projects' onClick={() => {
+            <MobileMenuLinks to='projects' onClick={() => {
               setOpen(!open)
             }}>Projects</MobileMenuLinks>
-            <MobileMenuLinks href='#contact' onClick={() => {
+            <MobileMenuLinks to='contact' onClick={() => {
               setOpen(!open)
             }}>Contact</MobileMenuLinks>
             <GitHubButton style={{

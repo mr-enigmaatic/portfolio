@@ -4,13 +4,15 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import { Bio } from '../../data/constants';
+import { Link as LinkR } from "react-router-dom";
 
 const FooterContainer = styled.div`
+  margin-top: 50px;
   width: 100%;
   padding: 2rem 0;
   display: flex;
   justify-content: center;
-  //background: linear-gradient(100.26deg, rgba(0, 102, 255, 0.05) 42.33%, rgba(150, 0, 225, 0.05) 127.07%);
+  background: linear-gradient(100.26deg, rgba(0, 102, 255, 0.05) 42.33%, rgba(150, 0, 225, 0.05) 127.07%);
 `;
 
 
@@ -48,7 +50,7 @@ const Nav = styled.nav`
   }
 `;
 
-const NavLink = styled.a`
+const NavLink = styled(LinkR)`
 color: ${({ theme }) => theme.text_primary};
   text-decoration: none;
   font-size: 1.2rem;
@@ -90,9 +92,10 @@ function Footer() {
       <FooterWrapper>
         <Logo>Vishnu C P</Logo>
         <Nav>
-          <NavLink href="#about">About</NavLink>
-          <NavLink href="#skills">Skills</NavLink>
-          <NavLink href="#projects">Projects</NavLink>
+          <NavLink to="/">About</NavLink>
+          <NavLink to="skills">Skills</NavLink>
+          <NavLink to="projects">Projects</NavLink>
+          <NavLink to="contact">Contact</NavLink>
         </Nav>
         <SocialMediaIcons>
           <SocialMediaIcon href={Bio.facebook} target="display"><FacebookIcon /></SocialMediaIcon>

@@ -89,6 +89,23 @@ const Description = styled.div`
     text-overflow: ellipsis;
 `;
 
+const Demo = styled.a`
+    font-size: 16px;
+    font-weight: 500;
+    color: ${({ theme }) => theme.text_primary};
+    border: 1px solid ${({ theme }) => theme.primary};
+    text-decoration: none;
+    text-align: center;
+    margin: 20px 0px 0px;
+    border-radius: 10px;
+    transition: all 0.6s ease-in-out;
+    &:hover {
+        background: ${({ theme }) => theme.primary};
+        box-shadow: 0 0 50px 4px rgba(0,0,0,0.6);
+        filter: brightness(1.1);
+    }
+`;
+
 function ProjectCard({project}) {
   return (
     <Card>
@@ -102,6 +119,7 @@ function ProjectCard({project}) {
             <Title>{project.title}</Title>
             <Date>{project.date}</Date>
             <Description>{project.description}</Description>
+            <Demo href={project.webapp} target="new">Live Demo</Demo>
         </Details>
     </Card>
   )

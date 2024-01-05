@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import { Snackbar } from '@mui/material';
-
+import { ToastContainer, toast } from 'react-toastify';
 const Container = styled.div`
 display: flex;
 flex-direction: column;
@@ -118,27 +118,20 @@ const ContactButton = styled.input`
   color: ${({ theme }) => theme.text_primary};
   font-size: 18px;
   font-weight: 600;
+  transition: all 0.6s ease-in-out;
+  &:hover {
+    background: ${({ theme }) => theme.button};
+  }
 `
 
 
 
 const Contact = () => {
 
-  //hooks
-  const [open, setOpen] = React.useState(false);
-  const form = useRef();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    emailjs.sendForm('service_tox7kqs', 'template_nv7k7mj', form.current, 'SybVGsYS52j2TfLbi')
-      .then((result) => {
-        setOpen(true);
-        form.current.reset();
-      }, (error) => {
-        console.log(error.text);
-      });
+  const handleSubmit = (e)=>{
+    e.preventDefault();    
+      alert("Email Sent Successfull");
   }
-
 
 
   return (
@@ -146,21 +139,14 @@ const Contact = () => {
       <Wrapper>
         <Title>Contact</Title>
         <Desc>Feel free to reach out to me for any questions or opportunities!</Desc>
-        <ContactForm ref={form} onSubmit={handleSubmit}>
+        <ContactForm  onSubmit={handleSubmit}>
           <ContactTitle>Email Me 🚀</ContactTitle>
-          <ContactInput placeholder="Your Email" name="from_email" />
-          <ContactInput placeholder="Your Name" name="from_name" />
-          <ContactInput placeholder="Subject" name="subject" />
-          <ContactInputMessage placeholder="Message" rows="4" name="message" />
+          <ContactInput placeholder="Your Email" name="from_email" type='email' required/>
+          <ContactInput placeholder="Your Name" name="from_name" type='text'  required/>
+          <ContactInput placeholder="Subject" name="subject" type='text' required/>
+          <ContactInputMessage placeholder="Message" rows="4" name="message" type='text' required/>
           <ContactButton type="submit" value="Send" />
         </ContactForm>
-        <Snackbar
-          open={open}
-          autoHideDuration={6000}
-          onClose={()=>setOpen(false)}
-          message="Email sent successfully!"
-          severity="success"
-        />
       </Wrapper>
     </Container>
   )
